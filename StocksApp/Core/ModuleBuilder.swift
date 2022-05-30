@@ -8,14 +8,16 @@
 import Foundation
 import UIKit
 
-final class ModuleBuilder {
+final class Assembly {
     private init() {}
     
     private lazy var network: NetworkService = {
         Network()
     }()
     
-    static let shared: ModuleBuilder = .init()
+    let favoritesService: FavoritesServiceProtocol = FavoritesLocalService()
+    
+    static let assembler: Assembly = .init()
     
     func networkService() -> NetworkService {
         network

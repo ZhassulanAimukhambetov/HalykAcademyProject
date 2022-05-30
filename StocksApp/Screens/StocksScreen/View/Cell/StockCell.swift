@@ -8,6 +8,7 @@
 import UIKit
 
 final class StockCell: UITableViewCell {
+    private var favoriteAction: (() -> Void)?
     private lazy var iconView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -54,7 +55,9 @@ final class StockCell: UITableViewCell {
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "favorite-off"), for: .normal)
+        button.setImage(.checkmark, for: .selected)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(favoriteButtonTap), for: .touchUpInside)
         return button
     }()
     
@@ -80,10 +83,25 @@ final class StockCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        favoriteAction = nil
+    }
+    
     func configure(with model: StockModelProtocol) {
         symbolLabel.text = model.symbol
         companyLabel.text = model.name
         priceLabel.text = model.price
+        favoriteButton.isSelected = model.isFavotite
+        favoriteAction = {
+            model.setFavorite()
+        }
+    }
+    
+    @objc private func favoriteButtonTap() {
+        favoriteButton.isSelected.toggle()
+        favoriteAction?()
     }
     
     private func setupContentView() {

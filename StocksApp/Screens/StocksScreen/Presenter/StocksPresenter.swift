@@ -47,7 +47,6 @@ final class StocksPresenter: StocksPresenterProtocol {
             switch result {
             case .success(let stocks):
                 self?.stoks = stocks.map { StockModel(stock: $0) }
-                print(stocks[2].id)
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)

@@ -12,12 +12,15 @@
 		C42A1806283E83A900137B28 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A1805283E83A900137B28 /* HttpMethod.swift */; };
 		C42A1808283E84BF00137B28 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A1807283E84BF00137B28 /* NetworkService.swift */; };
 		C42A180B283E867600137B28 /* StocksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A180A283E867600137B28 /* StocksService.swift */; };
+		C46C67AA2843713400CAC7AF /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C67A92843713400CAC7AF /* FavoritesService.swift */; };
 		C4844288284117B000A2C939 /* StocksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4844287284117B000A2C939 /* StocksPresenter.swift */; };
 		C484428E28411F2300A2C939 /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484428D28411F2300A2C939 /* NSObject+Ext.swift */; };
 		C484429028411F8100A2C939 /* StocksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484428F28411F8100A2C939 /* StocksRouter.swift */; };
 		C484429328411FB100A2C939 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484429228411FB100A2C939 /* StockModel.swift */; };
 		C48442952841203E00A2C939 /* StocksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48442942841203E00A2C939 /* StocksResponse.swift */; };
 		C48442972841264400A2C939 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48442962841264400A2C939 /* ModuleBuilder.swift */; };
+		C4B1DE9E28447AF10085624C /* UserDefaultsFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1DE9D28447AF10085624C /* UserDefaultsFavoritesService.swift */; };
+		C4B1DEA028447B400085624C /* FileManagerFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1DE9F28447B400085624C /* FileManagerFavoritesService.swift */; };
 		C4B69318283BD5F9002BD1BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B69317283BD5F9002BD1BC /* AppDelegate.swift */; };
 		C4B6931C283BD5F9002BD1BC /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B6931B283BD5F9002BD1BC /* StocksViewController.swift */; };
 		C4B69321283BD5FA002BD1BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B69320283BD5FA002BD1BC /* Assets.xcassets */; };
@@ -31,12 +34,15 @@
 		C42A1805283E83A900137B28 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		C42A1807283E84BF00137B28 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C42A180A283E867600137B28 /* StocksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksService.swift; sourceTree = "<group>"; };
+		C46C67A92843713400CAC7AF /* FavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
 		C4844287284117B000A2C939 /* StocksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksPresenter.swift; sourceTree = "<group>"; };
 		C484428D28411F2300A2C939 /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		C484428F28411F8100A2C939 /* StocksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRouter.swift; sourceTree = "<group>"; };
 		C484429228411FB100A2C939 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		C48442942841203E00A2C939 /* StocksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksResponse.swift; sourceTree = "<group>"; };
 		C48442962841264400A2C939 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		C4B1DE9D28447AF10085624C /* UserDefaultsFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFavoritesService.swift; sourceTree = "<group>"; };
+		C4B1DE9F28447B400085624C /* FileManagerFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFavoritesService.swift; sourceTree = "<group>"; };
 		C4B69314283BD5F9002BD1BC /* StocksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B69317283BD5F9002BD1BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4B6931B283BD5F9002BD1BC /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 		C42A17FF283E814400137B28 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C46C67A82843711E00CAC7AF /* FavoritesService */,
 				C42A1800283E815000137B28 /* NetworkService */,
 			);
 			path = Services;
@@ -120,6 +127,16 @@
 				C48442942841203E00A2C939 /* StocksResponse.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		C46C67A82843711E00CAC7AF /* FavoritesService */ = {
+			isa = PBXGroup;
+			children = (
+				C46C67A92843713400CAC7AF /* FavoritesService.swift */,
+				C4B1DE9F28447B400085624C /* FileManagerFavoritesService.swift */,
+				C4B1DE9D28447AF10085624C /* UserDefaultsFavoritesService.swift */,
+			);
+			path = FavoritesService;
 			sourceTree = "<group>";
 		};
 		C48442862841179D00A2C939 /* Presenter */ = {
@@ -275,13 +292,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46C67AA2843713400CAC7AF /* FavoritesService.swift in Sources */,
 				C42A1802283E822E00137B28 /* Router.swift in Sources */,
+				C4B1DEA028447B400085624C /* FileManagerFavoritesService.swift in Sources */,
 				C48442952841203E00A2C939 /* StocksResponse.swift in Sources */,
 				C484428E28411F2300A2C939 /* NSObject+Ext.swift in Sources */,
 				C4B6931C283BD5F9002BD1BC /* StocksViewController.swift in Sources */,
 				C4B69318283BD5F9002BD1BC /* AppDelegate.swift in Sources */,
 				C4B6932C283BDC21002BD1BC /* StockCell.swift in Sources */,
 				C42A1806283E83A900137B28 /* HttpMethod.swift in Sources */,
+				C4B1DE9E28447AF10085624C /* UserDefaultsFavoritesService.swift in Sources */,
 				C42A1804283E839100137B28 /* NetworkError.swift in Sources */,
 				C484429028411F8100A2C939 /* StocksRouter.swift in Sources */,
 				C484429328411FB100A2C939 /* StockModel.swift in Sources */,
