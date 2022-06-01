@@ -10,6 +10,7 @@ import UIKit
 
 protocol StocksViewProtocol: AnyObject {
     func updateView()
+    func updateCell(for indexPath: IndexPath)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
@@ -32,6 +33,7 @@ final class StocksPresenter: StocksPresenterProtocol {
     
     init(service: StocksServiceProtocol) {
         self.service = service
+        startFavoritesNotificationObserving()
     }
     
     weak var view: StocksViewProtocol?
@@ -46,7 +48,7 @@ final class StocksPresenter: StocksPresenterProtocol {
             
             switch result {
             case .success(let stocks):
-                self?.stoks = stocks.map { StockModel(stock: $0) }
+                self?.stoks = stocks
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
@@ -56,5 +58,14 @@ final class StocksPresenter: StocksPresenterProtocol {
     
     func model(for indexPath: IndexPath) -> StockModelProtocol {
         stoks[indexPath.row]
+    }
+}
+
+extension StocksPresenter: FavoritesUpdateServiceProtocol {
+    func setFavorite(notification: Notification) {
+        guard let id = notification.stockId,
+              let index = stoks.firstIndex(where: {$0.id == id }) else { return }
+        
+        view?.updateCell(for: IndexPath(row: index, section: 0))
     }
 }

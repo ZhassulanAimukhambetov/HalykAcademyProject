@@ -55,7 +55,7 @@ final class StockCell: UITableViewCell {
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "favorite-off"), for: .normal)
-        button.setImage(.checkmark, for: .selected)
+        button.setImage(UIImage(named: "favorite-on"), for: .selected)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(favoriteButtonTap), for: .touchUpInside)
         return button
@@ -105,6 +105,7 @@ final class StockCell: UITableViewCell {
     }
     
     private func setupContentView() {
+        selectionStyle = .none
         contentView.addSubview(iconView)
         contentView.addSubview(titleContainerView)
         contentView.addSubview(priceContainerView)

@@ -1,5 +1,5 @@
 //
-//  ModuleBuilder.swift
+//  Assembly.swift
 //  StocksApp
 //
 //  Created by Aimukhambetov Zhassulan on 27.05.2022.
@@ -9,26 +9,17 @@ import Foundation
 import UIKit
 
 final class Assembly {
-    private init() {}
-    
-    private lazy var network: NetworkService = {
-        Network()
-    }()
-    
-    let favoritesService: FavoritesServiceProtocol = FavoritesLocalService()
-    
     static let assembler: Assembly = .init()
+    let favoritesService: FavoritesServiceProtocol = FavoritesLocalService()
+
+    private init() {}
+
+    private lazy var network: NetworkService = Network()
+    private lazy var stocksService: StocksServiceProtocol = StocksService(network: network)
+    private lazy var chartsService: ChartsServiceProtocol = ChartsService(network: network)
     
-    func networkService() -> NetworkService {
-        network
-    }
-    
-    func stocksService() -> StocksServiceProtocol {
-        StocksService(client: network)
-    }
-    
-    func stocksModule() -> UIViewController {
-        let presneter = StocksPresenter(service: stocksService())
+    private func stocksModule() -> UIViewController {
+        let presneter = StocksPresenter(service: stocksService)
         let view = StocksViewController(presenter: presneter)
         presneter.view = view
         
@@ -58,5 +49,12 @@ final class Assembly {
         tabbar.viewControllers = [stocksVC, secondVC, thirdVC]
         
         return tabbar
+    }
+    
+    func detailVC(model: StockModelProtocol) -> UIViewController {
+        let presenter = StockDetailPresenter(model: model, service: chartsService)
+        let view = StockDetailViewController(presenter: presenter)
+        presenter.view = view
+        return view
     }
 }
