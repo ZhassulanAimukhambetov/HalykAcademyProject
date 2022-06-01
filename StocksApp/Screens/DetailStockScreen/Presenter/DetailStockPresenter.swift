@@ -57,7 +57,7 @@ final class DetailStockPresenter: DetailStockPresenterProtocol {
     }
     
     func favoriteButtonTapped() {
-        model.setFavorite()
+        // delete method
     }
     
 }
