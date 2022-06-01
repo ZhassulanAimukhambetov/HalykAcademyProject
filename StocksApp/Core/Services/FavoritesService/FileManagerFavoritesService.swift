@@ -29,13 +29,13 @@ final class FavoritesLocalService: FavoritesServiceProtocol {
     
     func save(id: String) {
         favoriteIds.append(id)
-        updateRepo()
+        updateRepo(with: id)
     }
     
     func remove(id: String) {
         if let index = favoriteIds.firstIndex(where: { $0 == id }) {
             favoriteIds.remove(at: index)
-            updateRepo()
+            updateRepo(with: id)
         }
     }
     
@@ -43,12 +43,17 @@ final class FavoritesLocalService: FavoritesServiceProtocol {
         favoriteIds.contains(id)
     }
     
-    private func updateRepo() {
+    private func updateRepo(with id: String) {
         do {
             let data = try JSONEncoder().encode(favoriteIds)
             try data.write(to: path)
+            post(id: id)
         } catch {
             print("FileManager WriteError - ", error.localizedDescription)
         }
+    }
+    
+    private func post(id: String) {
+        NotificationCenter.default.post(name: NSNotification.Name.favorites, object: nil, userInfo: ["id": id])
     }
 }
