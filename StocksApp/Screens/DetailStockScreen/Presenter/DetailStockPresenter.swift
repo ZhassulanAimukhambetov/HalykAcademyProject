@@ -60,4 +60,8 @@ final class DetailStockPresenter: DetailStockPresenterProtocol {
         model.setFavorite()
     }
     
+    private func Task2() {
+        
+    }
+    
 }
