@@ -26,6 +26,7 @@ final class StocksViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         
         return tableView
@@ -61,6 +62,10 @@ extension StocksViewController: StocksViewProtocol {
         tableView.reloadData()
     }
     
+    func updateCell(for indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
     func updateView(withLoader isLoading: Bool) {
         print("Loader is - ", isLoading, " at ", Date())
     }
@@ -70,7 +75,7 @@ extension StocksViewController: StocksViewProtocol {
     }
 }
 
-extension StocksViewController: UITableViewDataSource {
+extension StocksViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
         cell.configure(with: presenter.model(for: indexPath))
@@ -80,5 +85,11 @@ extension StocksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.itemsCount
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = presenter.model(for: indexPath)
+        let detailVC = Assembly.assembler.detailVC(for: model)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

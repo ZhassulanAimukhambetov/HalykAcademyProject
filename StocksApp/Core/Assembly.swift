@@ -1,5 +1,5 @@
 //
-//  ModuleBuilder.swift
+//  Assembly.swift
 //  StocksApp
 //
 //  Created by Aimukhambetov Zhassulan on 27.05.2022.
@@ -19,16 +19,10 @@ final class Assembly {
     
     static let assembler: Assembly = .init()
     
-    func networkService() -> NetworkService {
-        network
-    }
-    
-    func stocksService() -> StocksServiceProtocol {
-        StocksService(client: network)
-    }
+    private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
     
     func stocksModule() -> UIViewController {
-        let presneter = StocksPresenter(service: stocksService())
+        let presneter = StocksPresenter(service: stocksService)
         let view = StocksViewController(presenter: presneter)
         presneter.view = view
         
@@ -58,5 +52,13 @@ final class Assembly {
         tabbar.viewControllers = [stocksVC, secondVC, thirdVC]
         
         return tabbar
+    }
+    
+    func detailVC(for model: StockModelProtocol) -> UIViewController {
+        let presneter = DetailStockPresenter(model: model, service: stocksService)
+        let view = DetailStockViewController(presneter: presneter)
+        presneter.view = view
+        
+        return view
     }
 }
