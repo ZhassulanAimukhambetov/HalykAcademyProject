@@ -14,6 +14,12 @@ final class StockDetailViewController: UIViewController {
         return view
     }()
     
+    private lazy var chartsView: ChartsView = {
+        let view = ChartsView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let presenter: StockDetailPresenterProtocol
     
     override var hidesBottomBarWhenPushed: Bool {
@@ -35,6 +41,7 @@ final class StockDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        setupSubviews()
         setupNavigationBar()
         setupFavoriteButton()
         
@@ -43,6 +50,14 @@ final class StockDetailViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+    }
+    
+    private func setupSubviews() {
+        view.addSubview(chartsView)
+        
+        chartsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        chartsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        chartsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
     }
     
     private func setupNavigationBar() {
@@ -79,14 +94,14 @@ final class StockDetailViewController: UIViewController {
 
 extension StockDetailViewController: StockDetailViewProtocol {
     func updateView(withLoader isLoading: Bool) {
-        
+        chartsView.configure(with: isLoading)
     }
     
     func updateView(withError message: String) {
         
     }
     
-    func updateView() {
-        
+    func updateView(with model: ChartsModel) {
+        chartsView.configure(with: model)
     }
 }
