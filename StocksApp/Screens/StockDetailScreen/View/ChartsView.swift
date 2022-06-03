@@ -109,7 +109,7 @@ final class ChartsView: UIView {
             yValues.append(dataEntry)
         }
         
-        let lineDataSet = LineChartDataSet(entries: yValues, label: "$")
+        let lineDataSet = LineChartDataSet(entries: yValues, label: period.name)
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
         lineDataSet.valueTextColor = .white
         lineDataSet.drawFilledEnabled = true
@@ -125,17 +125,17 @@ final class ChartsView: UIView {
             $0.backgroundColor = sender.tag == $0.tag ? .black : UIColor(red: 240/255, green: 244/255, blue: 247/255, alpha: 1)
             $0.setTitleColor(sender.tag == $0.tag ? .white : .black, for: .normal)
         }
-        switch sender.tag {
-        case 0:
-            chartsView.backgroundColor = .blue
-        case 1:
-            chartsView.backgroundColor = .black
-        case 2:
-            chartsView.backgroundColor = .blue
-        case 3:
-            chartsView.backgroundColor = .green
-        default:
-            chartsView.backgroundColor = .clear
-        }
+//        switch sender.tag {
+//        case 0:
+//            chartsView.backgroundColor = .blue
+//        case 1:
+//            chartsView.backgroundColor = .black
+//        case 2:
+//            chartsView.backgroundColor = .blue
+//        case 3:
+//            chartsView.backgroundColor = .green
+//        default:
+//            chartsView.backgroundColor = .clear
+//        }
     }
 }
