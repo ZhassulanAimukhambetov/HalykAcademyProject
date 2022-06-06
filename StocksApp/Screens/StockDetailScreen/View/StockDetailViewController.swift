@@ -14,8 +14,8 @@ final class StockDetailViewController: UIViewController {
         return view
     }()
     
-    private lazy var chartsView: ChartsView = {
-        let view = ChartsView()
+    private lazy var chartsContainerView: ChartsContainerView = {
+        let view = ChartsContainerView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -50,6 +50,12 @@ final class StockDetailViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        
+        view.addSubview(chartsContainerView)
+        
+        chartsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        chartsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        chartsContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
     }
     
     private func setupSubviews() {
@@ -94,14 +100,14 @@ final class StockDetailViewController: UIViewController {
 
 extension StockDetailViewController: StockDetailViewProtocol {
     func updateView(withLoader isLoading: Bool) {
-        chartsView.configure(with: isLoading)
+        chartsContainerView.configure(with: isLoading)
     }
     
     func updateView(withError message: String) {
         
     }
     
-    func updateView(with model: ChartsModel) {
-        chartsView.configure(with: model)
+    func updateView() {
+        chartsContainerView.configure(with: ChartsModel(periods: []))
     }
 }

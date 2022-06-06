@@ -22,6 +22,8 @@
 		C484429328411FB100A2C939 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484429228411FB100A2C939 /* StockModel.swift */; };
 		C48442952841203E00A2C939 /* StocksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48442942841203E00A2C939 /* StocksResponse.swift */; };
 		C48442972841264400A2C939 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48442962841264400A2C939 /* Assembly.swift */; };
+		C494D12B284E580500607A76 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C494D12A284E580500607A76 /* Kingfisher */; };
+		C494D12D284E59DB00607A76 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494D12C284E59DB00607A76 /* UIImageView+Ext.swift */; };
 		C4B1DE9E28447AF10085624C /* UserDefaultsFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1DE9D28447AF10085624C /* UserDefaultsFavoritesService.swift */; };
 		C4B1DEA028447B400085624C /* FileManagerFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1DE9F28447B400085624C /* FileManagerFavoritesService.swift */; };
 		C4B69318283BD5F9002BD1BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B69317283BD5F9002BD1BC /* AppDelegate.swift */; };
@@ -53,6 +55,7 @@
 		C484429228411FB100A2C939 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		C48442942841203E00A2C939 /* StocksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksResponse.swift; sourceTree = "<group>"; };
 		C48442962841264400A2C939 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		C494D12C284E59DB00607A76 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		C4B1DE9D28447AF10085624C /* UserDefaultsFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFavoritesService.swift; sourceTree = "<group>"; };
 		C4B1DE9F28447B400085624C /* FileManagerFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFavoritesService.swift; sourceTree = "<group>"; };
 		C4B69314283BD5F9002BD1BC /* StocksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,13 +79,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40556D2284A3B750015F362 /* Charts in Frameworks */,
+				C494D12B284E580500607A76 /* Kingfisher in Frameworks */,
+				C40556DA284A5C9B0015F362 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40556D5284A4FF40015F362 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C40556DB284A63A10015F362 /* ChartsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C42A17F9283E80DB00137B28 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				C484428D28411F2300A2C939 /* NSObject+Ext.swift */,
+				C494D12C284E59DB00607A76 /* UIImageView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,8 +257,8 @@
 		C4C02D832844A2E40020C962 /* StockDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				C40556D5284A4FF40015F362 /* Model */,
 				C4CDF3C0284772D600C1D227 /* Service */,
-				C4C02D842844A30A0020C962 /* Model */,
 				C4C02D872844A32D0020C962 /* View */,
 				C4C02D862844A3180020C962 /* Presenter */,
 			);
@@ -274,6 +287,7 @@
 				C4C02D882844A34F0020C962 /* StockDetailViewController.swift */,
 				C40556CE284A302C0015F362 /* ChartsView.swift */,
 				C4C02D8A2844A43C0020C962 /* DetailTitleView.swift */,
+				C40556D6284A50660015F362 /* ChartsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,7 +318,8 @@
 			);
 			name = StocksApp;
 			packageProductDependencies = (
-				C40556D1284A3B750015F362 /* Charts */,
+				C40556D9284A5C9B0015F362 /* Charts */,
+				C494D12A284E580500607A76 /* Kingfisher */,
 			);
 			productName = StocksApp;
 			productReference = C4B69314283BD5F9002BD1BC /* StocksApp.app */;
@@ -335,7 +350,8 @@
 			);
 			mainGroup = C4B6930B283BD5F9002BD1BC;
 			packageReferences = (
-				C40556D0284A3B750015F362 /* XCRemoteSwiftPackageReference "Charts" */,
+				C40556D8284A5C9B0015F362 /* XCRemoteSwiftPackageReference "Charts" */,
+				C494D129284E580500607A76 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C4B69315283BD5F9002BD1BC /* Products */;
 			projectDirPath = "";
@@ -384,6 +400,7 @@
 				C40556CF284A302C0015F362 /* ChartsView.swift in Sources */,
 				C484429028411F8100A2C939 /* StocksRouter.swift in Sources */,
 				C484429328411FB100A2C939 /* StockModel.swift in Sources */,
+				C494D12D284E59DB00607A76 /* UIImageView+Ext.swift in Sources */,
 				C4844288284117B000A2C939 /* StocksPresenter.swift in Sources */,
 				C48442972841264400A2C939 /* Assembly.swift in Sources */,
 				C42A180B283E867600137B28 /* StocksService.swift in Sources */,
@@ -600,7 +617,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C40556D0284A3B750015F362 /* XCRemoteSwiftPackageReference "Charts" */ = {
+		C40556D8284A5C9B0015F362 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
@@ -608,13 +625,26 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		C494D129284E580500607A76 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C40556D1284A3B750015F362 /* Charts */ = {
+		C40556D9284A5C9B0015F362 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C40556D0284A3B750015F362 /* XCRemoteSwiftPackageReference "Charts" */;
+			package = C40556D8284A5C9B0015F362 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		C494D12A284E580500607A76 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C494D129284E580500607A76 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -15,13 +15,11 @@ final class StockCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 12
         image.clipsToBounds = true
-        image.image = UIImage(named: "YNDX")
         return image
     }()
     
     private lazy var symbolLabel: UILabel = {
         let label = UILabel()
-        label.text = "YNDX"
         label.font = .systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -29,7 +27,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var companyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Yandex, LLC"
         label.font = .systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,7 +34,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "4 764,6 ₽"
         label.font = .systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -90,6 +86,7 @@ final class StockCell: UITableViewCell {
     }
     
     func configure(with model: StockModelProtocol) {
+        iconView.setImage(from: model.iconURL, placeHolder: UIImage(named: "YNDX"))
         symbolLabel.text = model.symbol
         companyLabel.text = model.name
         priceLabel.text = model.price
@@ -160,5 +157,34 @@ final class StockCell: UITableViewCell {
         changeLabel.trailingAnchor.constraint(equalTo: priceContainerView.trailingAnchor).isActive = true
         changeLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor).isActive = true
         changeLabel.bottomAnchor.constraint(equalTo: priceContainerView.bottomAnchor).isActive = true
+    }
+    
+    // Этот метод не используем, написали для ознокомления с кэшированием.
+    private func loadImage(from urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        let iconTag = tag
+       
+        let cache = URLCache(memoryCapacity: 50, diskCapacity: 50, diskPath: "stock_icons")
+        let configuration = URLSessionConfiguration.default
+        configuration.urlCache = cache
+        configuration.httpMaximumConnectionsPerHost = 5
+        
+        let session = URLSession(configuration: configuration)
+        
+        session.dataTask(with: url) { [weak self] data, _, _ in
+            guard let data = data else {
+                return
+            }
+
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if iconTag == self?.tag {
+                    self?.iconView.image = image
+                } else {
+                    print("Image dowload Error")
+                }
+            }
+        }.resume()
     }
 }
