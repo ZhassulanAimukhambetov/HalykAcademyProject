@@ -40,8 +40,8 @@ final class Assembly {
         let stocksVC = UINavigationController(rootViewController: stocksModule())
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: .add, tag: 0)
         
-        let secondVC = secondVC()
-        secondVC.tabBarItem = UITabBarItem(title: "Favorites", image: nil, tag: 2)
+        let secondVC = secondScreen()
+        secondVC.tabBarItem = UITabBarItem(title: "Favorites", image: .checkmark, tag: 2)
         
         let thirdVC = thirdVC()
         thirdVC.tabBarItem = UITabBarItem(title: "Search", image: nil, tag: 2)
@@ -56,5 +56,12 @@ final class Assembly {
         let view = StockDetailViewController(presenter: presenter)
         presenter.view = view
         return view
+    }
+    
+    func secondScreen() -> UIViewController {
+        let model = StocksModelMVVM(service: MockService())
+        let viewModel = StocksViewModel(model: model)
+        
+        return StocksMVVMViewController(viewModel: viewModel)
     }
 }
