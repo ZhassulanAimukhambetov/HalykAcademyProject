@@ -22,3 +22,4 @@ struct ChartsModel {
                                      Period(name: "1Y", prices: [])])
     }
 }
+
